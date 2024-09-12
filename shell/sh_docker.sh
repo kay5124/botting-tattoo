@@ -15,10 +15,10 @@ case "$ENVIRONMENT" in
 esac
 
 # 使用 docker-compose 來管理容器
-docker-compose --profile $ENVIRONMENT up -d --build --remove-orphans
+docker compose --profile $ENVIRONMENT up -d --build --remove-orphans
 
 # 獲取容器名稱和端口
-CONTAINER_NAME=$(docker-compose --profile $ENVIRONMENT ps -q)
+CONTAINER_NAME=$(docker compose --profile $ENVIRONMENT ps -q)
 PORT=$(docker port $CONTAINER_NAME 80 | cut -d ':' -f 2)
 
 echo "Frontend ($ENVIRONMENT) is now running on port $PORT"
