@@ -1,36 +1,19 @@
 version: '3.8'
 
 services:
-  frontend-dev:
+  online:
     build:
       context: .
       args:
-        - NODE_ENV=dev
+        - NODE_ENV=online
       dockerfile: Dockerfile
-    image: chat-game-frontend-v2-build-dev:latest
-    container_name: chat-game-frontend-v2-build-dev
+    image: boting-tattoo-online:latest
+    container_name: boting-tattoo-online
     ports:
-      - "20080:80"
+      - "8080:80"
     environment:
-      - NODE_ENV=dev
+      - NODE_ENV=online
     env_file:
-      - .env.dev
+      - .env.online
     profiles:
-      - dev
-
-  frontend-prod:
-    build:
-      context: .
-      args:
-        - NODE_ENV=prod
-      dockerfile: Dockerfile
-    image: chat-game-frontend-v2-build-prod:latest
-    container_name: chat-game-frontend-v2-build-prod
-    ports:
-      - "20080:80"
-    environment:
-      - NODE_ENV=prod
-    env_file:
-      - .env.prod
-    profiles:
-      - prod
+      - online
