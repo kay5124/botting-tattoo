@@ -30,4 +30,4 @@ jobs:
               env:
                   ENVIRONMENT: ${{ github.ref_name }}
               run: |
-                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'ENVIRONMENT=${{ github.ref_name }}bash /var/server/deploy_shells/boting-tattoo.sh'
+                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'bash /var/server/deploy_shells/boting-tattoo.sh ${{ github.ref_name }}'
