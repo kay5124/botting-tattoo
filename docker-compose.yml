@@ -10,7 +10,7 @@ services:
     image: boting-tattoo-online:latest
     container_name: boting-tattoo-online
     ports:
-      - "8080:80"
+      - "80:80"
     environment:
       - NODE_ENV=online
     env_file:
