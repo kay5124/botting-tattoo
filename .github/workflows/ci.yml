@@ -18,6 +18,14 @@ jobs:
               with:
                   ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
+            - name: Test SSH Connection
+              run: |
+                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'echo "SSH connection successful"'
+
+            - name: List Directory Contents
+              run: |
+                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'ls -l /var/server/deploy_shells/'
+
             - name: Deploy to Server
               run: |
-                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'bash -s' < /var/server/deploy_shells/boting-tattoo.sh
+                  ssh -o StrictHostKeyChecking=no gcpn01@34.81.11.215 'bash /var/server/deploy_shells/boting-tattoo.sh'
