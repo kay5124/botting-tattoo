@@ -5,7 +5,7 @@ import { useWebSocket } from "@vueuse/core";
 import { useMemberStore } from "@/stores/member.store";
 import { Dialog, Loading } from "quasar";
 import router from "../router/router";
-import i18n from "../plugins/i18n";
+// import i18n from "../plugins/i18n";
 import dayjs from "dayjs";
 import { sleep } from "@/utils/globalFns";
 

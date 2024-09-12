@@ -3,7 +3,7 @@ import axios from "axios";
 import qs from "qs";
 import { Notify } from "quasar";
 import router from "../router/router";
-import i18n from "./i18n";
+// import i18n from "./i18n";
 import { sleep } from "@/utils/globalFns";
 
 // 全局配置
@@ -50,11 +50,10 @@ service.interceptors.response.use(
     if (res.status === 200 || res.data.statusCode === 200) {
       if (["post", "put", "delete"].includes(res.config.method?.toLowerCase())) {
         if (!noUseNotify) {
-          const { t } = i18n.global;
           Notify.create({
             type: "positive",
             position: "top-right",
-            message: t("Success"),
+            message: "成功",
             timeout: 2000,
             progress: true,
           });
