@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  frontend-dev:
+    build:
+      context: .
+      args:
+        - NODE_ENV=dev
+      dockerfile: Dockerfile
+    image: chat-game-frontend-v2-build-dev:latest
+    container_name: chat-game-frontend-v2-build-dev
+    ports:
+      - "20080:80"
+    environment:
+      - NODE_ENV=dev
+    env_file:
+      - .env.dev
+    profiles:
+      - dev
+
+  frontend-prod:
+    build:
+      context: .
+      args:
+        - NODE_ENV=prod
+      dockerfile: Dockerfile
+    image: chat-game-frontend-v2-build-prod:latest
+    container_name: chat-game-frontend-v2-build-prod
+    ports:
+      - "20080:80"
+    environment:
+      - NODE_ENV=prod
+    env_file:
+      - .env.prod
+    profiles:
+      - prod
