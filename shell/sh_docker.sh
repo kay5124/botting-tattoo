@@ -14,37 +14,6 @@ case "$ENVIRONMENT" in
     ;;
 esac
 
-# 設定域名和證書路徑
-echo "Setting up domains and certificates..."
-domains=(bottingtattoo.com www.bottingtattoo.com)
-rsa_key_size=4096
-data_path="/var/server/certs"
-email="dsa123465@gmail.com" # Adding a valid address is strongly recommended
-staging=0 # Set to 1 if you're testing your setup to avoid hitting request limits
-
-if [ -d "$data_path" ]; then
-  echo "Existing data found for $domains. Continuing and replacing existing certificate..."
-  # 自動確認替換現有證書
-fi
-
-mkdir -p "$data_path"
-mkdir -p "$data_path/conf"
-mkdir -p "$data_path/www"
-echo "Setting up domains and certificates...done"
-
-# 生成或更新證書
-docker compose run --rm --entrypoint "\
-  certbot certonly --webroot -w /var/www/certbot \
-    --email $email \
-    -d ${domains[@]} \
-    --rsa-key-size $rsa_key_size \
-    --agree-tos \
-    --force-renewal" certbot
-
-# 重新加載 Nginx 配置
-echo "### Reloading online ..."
-docker compose exec online nginx -s reload
-
 # 啟動 Docker Compose 服務
 echo "### Starting services with profile $ENVIRONMENT ..."
 docker compose --profile $ENVIRONMENT up -d --build --remove-orphans
