@@ -41,6 +41,10 @@ docker compose run --rm --entrypoint "\
     --agree-tos \
     --force-renewal" certbot
 
+# 重新加載 Nginx 配置
+echo "### Reloading online ..."
+docker compose exec online nginx -s reload
+
 # 啟動 Docker Compose 服務
 echo "### Starting services with profile $ENVIRONMENT ..."
 docker compose --profile $ENVIRONMENT up -d --build --remove-orphans
