@@ -15,7 +15,7 @@
         </q-header>
 
         <q-page-container class="pt-0" style="overflow: hidden">
-            <q-img :src="mainBg01" :style="{ height: getScreenHeight() + 'px' }" fit="cover" spinner-color="white" spinner-size="82px" style="filter: grayscale(100%)">
+            <q-img :src="mainBg" :style="{ height: getScreenHeight() + 'px' }" fit="cover" spinner-color="white" spinner-size="82px" style="filter: grayscale(100%)">
                 <div class="absolute-bottom-left ml-2 mb-12" style="background: transparent">
                     <h1 class="text-white bnrFont pa-0 ma-0" style="line-height: 80px">
                         Boting
@@ -121,8 +121,9 @@
     </q-layout>
 </template>
 <script setup lang="ts">
-import mainBg from '@/assets/images/main_bg.jpg';
-import mainBg01 from '@/assets/images/main_bg01.jpg';
+// import mainBg from '@/assets/images/main_bg.jpg';
+// import mainBg from '@/assets/images/main_bg01.jpg';
+import mainBg from '@/assets/images/main_bg02.jpg';
 import studio from '@/assets/images/studio.jpg';
 import { showImage, getImageUrl } from '@/utils/globalFns';
 import { useQuasar } from 'quasar';
